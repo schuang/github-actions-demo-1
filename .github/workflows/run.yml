@@ -8,16 +8,17 @@ jobs:
       - run: echo "OS type = ${{ runner.os }}"
       - run: echo "repository = ${{ github.repository }}"
       - run: echo "git branch = ${{ github.ref }}"
-      - name: a normal "ls"
-        run: pwd; ls -al
-      - name: ls the workspace
+      - name: ls the workspace part 1
         run: pwd; ls -al ${{ github.workspace }}
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: echo "Repository ${{ github.repository }} is cloned to the runner."
-      - name: List files in the repository
+      - name: ls the workspace part 2
+        run: ls -l ${{ github.workspace }}
+      - name: OS info
         run: |
-          ls -l ${{ github.workspace }}
+            uname -a
+            hostname
       - run: echo "This job's status is ${{ job.status }}."
   my-job-2:
     runs-on: ubuntu-18.04
