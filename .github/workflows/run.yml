@@ -22,6 +22,8 @@ jobs:
         run: |
           uname -a
           hostname
+          cat /proc/cpuinfo |grep ^processor
+          cat /proc/cpuinfo |grep ^'model name' | uniq
           curl https://ipinfo.io/ip
       - name: step 2 (uptime)
         run: |
