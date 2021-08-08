@@ -8,6 +8,10 @@ jobs:
       - run: echo "OS type = ${{ runner.os }}"
       - run: echo "repository = ${{ github.repository }}"
       - run: echo "git branch = ${{ github.ref }}"
+      - name: a normal "ls"
+        run: pwd; ls -al
+      - name: ls the workspace
+        run: pwd; ls -al ${{ github.workspace }}
       - name: Check out repository code
         uses: actions/checkout@v2
       - run: echo "Repository ${{ github.repository }} is cloned to the runner."
